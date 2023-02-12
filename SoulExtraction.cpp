@@ -1,5 +1,7 @@
 #include <fltKernel.h>
 
+#include "Lib-SoulExtraction/Lib.SoulExtraction.h"
+
 #define dprintf(...) DbgPrintEx(DPFLTR_IHVDRIVER_ID, DPFLTR_ERROR_LEVEL, __VA_ARGS__)
 
 void

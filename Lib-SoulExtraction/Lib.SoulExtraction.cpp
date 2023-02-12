@@ -375,6 +375,68 @@ UTF8ToUnicodeN(PWSTR uni_dest, ULONG uni_bytes_max, PULONG uni_bytes_written, PC
     return status;
 }
 
+NTSTATUS
+UTF8ToUTF16(/*IN*/ char UTF8[_MAX_PATH], /*OUT*/ wchar_t UTF16[_MAX_PATH])
+{
+    NTSTATUS ns = STATUS_UNSUCCESSFUL;
+    ULONG utf16len;
+    WCHAR *buf;
+
+    auto UTF8Len = _strlen_a(UTF8);
+
+    ns = UTF8ToUnicodeN(nullptr, 0, &utf16len, UTF8, UTF8Len);
+    if (!NT_SUCCESS(ns))
+    {
+        return ns;
+    }
+
+    buf = (WCHAR *)UTF16;
+    ns = UTF8ToUnicodeN(buf, utf16len, &utf16len, UTF8, UTF8Len);
+    if (!NT_SUCCESS(ns))
+    {
+        return ns;
+    }
+
+    buf[utf16len / sizeof(WCHAR)] = 0;
+
+    return ns;
+}
+
+NTSTATUS
+UTF16ToAscii(/*IN*/ wchar_t UTF16[_MAX_PATH], /*OUT*/ char Ascii[_MAX_PATH])
+{
+    NTSTATUS ns = STATUS_UNSUCCESSFUL;
+
+    UNICODE_STRING us;
+    ANSI_STRING as;
+    char buf[_MAX_PATH] = {0};
+    SIZE_T utf16len;
+
+    utf16len = _strlen_w(UTF16) * sizeof(wchar_t);
+
+    as.Buffer = buf;
+    as.Length = (USHORT)utf16len;
+    as.MaximumLength = (USHORT)(as.Length + sizeof(wchar_t));
+
+    RtlInitUnicodeString(&us, UTF16);
+
+    do
+    {
+        ns = RtlUnicodeStringToAnsiString(&as, &us, FALSE);
+        if (!NT_SUCCESS(ns))
+        {
+            break;
+        }
+
+        memcpy(Ascii, buf, as.Length);
+
+        buf[as.Length] = 0;
+
+    } while (0);
+
+    return ns;
+}
+
 static bool
 IsMainCert(
     /*IN*/ struct pkcs7_message *Pkcs7,
@@ -528,7 +590,7 @@ GetMainCertInfo(
             wchar_t utf16[_MAX_PATH + sizeof(wchar_t)];
 
             RtlSecureZeroMemory(utf16, _MAX_PATH + sizeof(wchar_t));
-            auto ns = UTF8ToUTF16(subject, subject_len, utf16, _MAX_PATH);
+            auto ns = UTF8ToUTF16(subject, utf16);
             if (NT_SUCCESS(ns))
             {
                 char ascii[_MAX_PATH + sizeof(char)];
@@ -536,7 +598,7 @@ GetMainCertInfo(
 
                 RtlSecureZeroMemory(ascii, _MAX_PATH + sizeof(char));
 
-                ns = UTF16ToAscii(utf16, utf16_len, ascii, _MAX_PATH);
+                ns = UTF16ToAscii(utf16, ascii);
                 if (NT_SUCCESS(ns))
                 {
                     auto ascii_len = (unsigned long)_strlen_a(ascii);
