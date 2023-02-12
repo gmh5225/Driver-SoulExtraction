@@ -7,3 +7,6 @@ SoulExtraction is a windows driver library for extracting cert information in wi
 ## Compile
 - Visual Studio 2022 & WDK10
 - llvm-msvc [[link]](https://github.com/NewWorldComingSoon/llvm-msvc-build)
+
+## Credit
+- linux
