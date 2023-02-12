@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <intrin.h>
 
 #include "Lib.SoulExtraction.h"
 extern "C" {

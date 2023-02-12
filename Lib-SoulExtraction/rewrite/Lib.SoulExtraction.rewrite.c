@@ -1,5 +1,6 @@
 #include "Lib.SoulExtraction.rewrite.h"
 #include <stdarg.h>
+#include <intrin.h>
 
 #define SOUL_POOL_TAG 'SOUL'
 
