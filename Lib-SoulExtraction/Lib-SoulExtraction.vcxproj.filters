@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="rewrite">
+      <UniqueIdentifier>{dfa2a449-d195-41f6-9061-1cddd0d53459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="linux">
+      <UniqueIdentifier>{ff838198-8354-4f87-9c88-5d00dd0ae098}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="rewrite\Lib.SoulExtraction.rewrite.c">
+      <Filter>rewrite</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\mscode_parser.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\oid_registry.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\pkcs7_parser.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\public_key.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\signature.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\system_keyring.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\verify_pefile.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\x509_cert_parser.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\x509_public_key.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\asn1_decoder.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="linux\asymmetric_type.c">
+      <Filter>linux</Filter>
+    </ClCompile>
+    <ClCompile Include="Lib.SoulExtraction.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="rewrite\Lib.SoulExtraction.rewrite.h">
+      <Filter>rewrite</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\errno-base.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\key.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\oid_registry.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\pe.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\pkcs7.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\pkcs7_parser.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\public_key.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\verify_pefile.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\x509_parser.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\asn1.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\asn1_ber_bytecode.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\asn1_decoder.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\asymmetric-type.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\config.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="linux\errno.h">
+      <Filter>linux</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib.SoulExtraction.h" />
+  </ItemGroup>
+</Project>
